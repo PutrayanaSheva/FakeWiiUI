@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Kit Documentation</title>
+  <link rel="stylesheet" href="styles/uikit.css">
+  <style>
+    body {
+      background: #eaf6ff;
+      margin: 0;
+      display: flex;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .docs-sidebar {
+      width: 220px;
+      background: #f4f7fa;
+      border-right: 2px solid #bde3ff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2rem;
+      min-height: 100vh;
+    }
+    .docs-sidebar .sidebar-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #0078d7;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .docs-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .docs-menu li {
+      margin-bottom: 0.5rem;
+    }
+    .docs-menu button {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 0.9rem 2rem;
+      font-size: 1.08rem;
+      color: #0078d7;
+      border-radius: 0 18px 18px 0;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      font-family: inherit;
+      outline: none;
+    }
+    .docs-menu button.active, .docs-menu button:focus {
+      background: linear-gradient(90deg, #bde3ff 30%, #eaf6ff 100%);
+      color: #005fa3;
+      font-weight: bold;
+    }
+    .docs-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .docs-header {
+      background: linear-gradient(90deg, #bde3ff 60%, #eaf6ff 100%);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #bde3ff;
+    }
+    .docs-header-title {
+      font-size: 1.5rem;
+      font-family: 'WiiFont', 'Segoe UI', Arial, sans-serif;
+      color: #0078d7;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+    .docs-lang-switch {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .docs-lang-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      color: #0078d7;
+      transition: background 0.18s, color 0.18s;
+    }
+    .docs-lang-btn.active {
+      background: #bde3ff;
+      color: #005fa3;
+      font-weight: bold;
+    }
+    .docs-content {
+      padding: 2.5rem 2.5rem 2rem 2.5rem;
+      background: #fff;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .docs-sidebar { width: 60px; padding-top: 1rem; }
+      .docs-sidebar .sidebar-title { display: none; }
+      .docs-menu button { padding: 0.9rem 0.7rem; font-size: 1rem; }
+      .docs-main { padding-left: 0; }
+      .docs-content { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="docs-sidebar">
+    <div class="sidebar-title">Wii UI Kit</div>
+    <ul class="docs-menu">
+      <li><button id="menu-intro" class="active" onclick="showSection('intro')"><img src="components/icon/Welcome.png" alt="Intro" class="wii-icon" style="width:22px;height:22px;margin-right:0.7rem;vertical-align:middle;">Introduction</button></li>
+      <li><button id="menu-install" onclick="showSection('install')"><img src="components/icon/User file.png" alt="Install" class="wii-icon" style="width:22px;height:22px;margin-right:0.7rem;vertical-align:middle;">How to Install</button></li>
+      <li><button id="menu-components" onclick="showSection('components')"><img src="components/icon/Super Mario.png" alt="Components" class="wii-icon" style="width:22px;height:22px;margin-right:0.7rem;vertical-align:middle;">Components</button></li>
+    </ul>
+  </nav>
+  <main class="docs-main">
+    <div class="docs-header">
+      <span class="docs-header-title">UI Kit Documentation</span>
+      <div class="docs-lang-switch">
+        <button class="docs-lang-btn active" id="lang-id" onclick="switchLang('id')">🇮🇩 Indonesia</button>
+        <button class="docs-lang-btn" id="lang-en" onclick="switchLang('en')">🇬🇧 English</button>
+      </div>
+    </div>
+    <section class="docs-content">
+      <!-- Introduction Section -->
+      <div id="section-intro" class="docs-section">
+        <h1>Selamat Datang di Nintendo Wii UI Kit!</h1>
+        <p>UI Kit ini menghadirkan komponen antarmuka bergaya Nintendo Wii untuk website Anda. Ringan, mudah digunakan, dan dapat dikustomisasi.</p>
+        <hr>
+        <h1 style="display:none;">Welcome to Nintendo Wii UI Kit!</h1>
+        <p style="display:none;">This UI Kit brings Nintendo Wii-style interface components to your website. Lightweight, easy to use, and customizable.</p>
+      </div>
+      <!-- How to Install Section -->
+      <div id="section-install" class="docs-section" style="display:none;">
+        <h1>Cara Instalasi</h1>
+        <ol>
+          <li>Salin folder <b>styles/</b> dan <b>components/</b> ke project Anda.</li>
+          <li>Tambahkan link CSS berikut ke &lt;head&gt; HTML Anda:<br>
+            <pre><code>&lt;link rel="stylesheet" href="styles/uikit.css"&gt;</code></pre>
+          </li>
+          <li>Gunakan komponen di HTML Anda, contoh:<br>
+            <pre><code>&lt;button class="wii-btn"&gt;Tombol Wii&lt;/button&gt;</code></pre>
+          </li>
+        </ol>
+        <hr>
+        <h1 style="display:none;">How to Install</h1>
+        <ol style="display:none;">
+          <li>Copy the <b>styles/</b> and <b>components/</b> folders to your project.</li>
+          <li>Add the following CSS link to your HTML &lt;head&gt;:<br>
+            <pre><code>&lt;link rel="stylesheet" href="styles/uikit.css"&gt;</code></pre>
+          </li>
+          <li>Use the components in your HTML, for example:<br>
+            <pre><code>&lt;button class="wii-btn"&gt;Wii Button&lt;/button&gt;</code></pre>
+          </li>
+        </ol>
+      </div>
+      <!-- Components Section -->
+      <div id="section-components" class="docs-section" style="display:none;">
+        <h1>Komponen</h1>
+        <p>Berikut daftar komponen yang tersedia di UI Kit ini beserta preview dan contoh penggunaannya.</p>
+        <hr>
+        <h1 style="display:none;">Components</h1>
+        <p style="display:none; display:block;">Below is the list of available components in this UI Kit with preview and usage example.</p>
+        <!-- Komponen Preview (Indonesia & Inggris, toggle dengan JS) -->
+        <div id="components-list-id">
+          <!-- Button -->
+          <h2>Button</h2>
+          <button class="wii-btn">Tombol Wii</button>
+          <pre><code>&lt;button class="wii-btn"&gt;Tombol Wii&lt;/button&gt;</code></pre>
+          <!-- Input -->
+          <h2>Input</h2>
+          <label class="wii-label">Nama
+            <input class="wii-input" type="text" placeholder="Masukkan nama Anda">
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Nama
+  &lt;input class="wii-input" type="text" placeholder="Masukkan nama Anda"&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Textarea -->
+          <h2>Textarea</h2>
+          <label class="wii-label">Pesan
+            <textarea class="wii-textarea" placeholder="Tulis pesan Anda..."></textarea>
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Pesan
+  &lt;textarea class="wii-textarea" placeholder="Tulis pesan Anda..."&gt;&lt;/textarea&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Card -->
+          <h2>Card</h2>
+          <div class="wii-card">
+            <h2 class="wii-card-title">Judul Card</h2>
+            <p>Ini adalah contoh card dengan gaya Nintendo Wii.</p>
+          </div>
+          <pre><code>&lt;div class="wii-card"&gt;
+  &lt;h2 class="wii-card-title"&gt;Judul Card&lt;/h2&gt;
+  &lt;p&gt;Ini adalah contoh card dengan gaya Nintendo Wii.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Modal -->
+          <h2>Modal</h2>
+          <button class="wii-btn" onclick="document.getElementById('demoModal').style.display='flex'">Buka Modal</button>
+          <div class="wii-modal" id="demoModal" style="display:none;">
+            <div class="wii-modal-content">
+              <button class="wii-btn wii-modal-close" onclick="document.getElementById('demoModal').style.display='none'">&times;</button>
+              <h2>Modal Wii</h2>
+              <p>Ini adalah modal dengan gaya Nintendo Wii.</p>
+            </div>
+          </div>
+          <pre><code>&lt;button class="wii-btn" onclick="document.getElementById('demoModal').style.display='flex'"&gt;Buka Modal&lt;/button&gt;
+&lt;div class="wii-modal" id="demoModal" style="display:none;"&gt;
+  &lt;div class="wii-modal-content"&gt;
+    &lt;button class="wii-btn wii-modal-close" onclick="document.getElementById('demoModal').style.display='none'"&gt;&amp;times;&lt;/button&gt;
+    &lt;h2&gt;Modal Wii&lt;/h2&gt;
+    &lt;p&gt;Ini adalah modal dengan gaya Nintendo Wii.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Checkbox -->
+          <h2>Checkbox</h2>
+          <label class="wii-checkbox-label">
+            <input type="checkbox" class="wii-checkbox">
+            <span class="wii-checkbox-custom"></span>
+            Checkbox Wii
+          </label>
+          <pre><code>&lt;label class="wii-checkbox-label"&gt;
+  &lt;input type="checkbox" class="wii-checkbox"&gt;
+  &lt;span class="wii-checkbox-custom"&gt;&lt;/span&gt;
+  Checkbox Wii
+&lt;/label&gt;</code></pre>
+          <!-- Radio -->
+          <h2>Radio Button</h2>
+          <label class="wii-radio-label">
+            <input type="radio" name="wii-radio-docs" class="wii-radio">
+            <span class="wii-radio-custom"></span>
+            Radio Wii
+          </label>
+          <pre><code>&lt;label class="wii-radio-label"&gt;
+  &lt;input type="radio" name="wii-radio" class="wii-radio"&gt;
+  &lt;span class="wii-radio-custom"&gt;&lt;/span&gt;
+  Radio Wii
+&lt;/label&gt;</code></pre>
+          <!-- Switch -->
+          <h2>Switch / Toggle</h2>
+          <label class="wii-switch">
+            <input type="checkbox" class="wii-switch-input">
+            <span class="wii-switch-slider"></span>
+            <span class="wii-switch-label">Switch Wii</span>
+          </label>
+          <pre><code>&lt;label class="wii-switch"&gt;
+  &lt;input type="checkbox" class="wii-switch-input"&gt;
+  &lt;span class="wii-switch-slider"&gt;&lt;/span&gt;
+  &lt;span class="wii-switch-label"&gt;Switch Wii&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Select -->
+          <h2>Select / Dropdown</h2>
+          <label class="wii-label">Pilih Opsi
+            <select class="wii-select">
+              <option>Opsi 1</option>
+              <option>Opsi 2</option>
+              <option>Opsi 3</option>
+            </select>
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Pilih Opsi
+  &lt;select class="wii-select"&gt;
+    &lt;option&gt;Opsi 1&lt;/option&gt;
+    &lt;option&gt;Opsi 2&lt;/option&gt;
+    &lt;option&gt;Opsi 3&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Tooltip -->
+          <h2>Tooltip</h2>
+          <button class="wii-btn wii-tooltip-parent">Hover aku!
+            <span class="wii-tooltip">Ini tooltip Wii!</span>
+          </button>
+          <pre><code>&lt;button class="wii-btn wii-tooltip-parent"&gt;Hover aku!
+  &lt;span class="wii-tooltip"&gt;Ini tooltip Wii!&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+          <!-- Pagination -->
+          <h2>Pagination</h2>
+          <div class="wii-pagination">
+            <button class="wii-btn" disabled>&laquo;</button>
+            <button class="wii-btn active">1</button>
+            <button class="wii-btn">2</button>
+            <button class="wii-btn">3</button>
+            <button class="wii-btn">&raquo;</button>
+          </div>
+          <pre><code>&lt;div class="wii-pagination"&gt;
+  &lt;button class="wii-btn" disabled&gt;&laquo;&lt;/button&gt;
+  &lt;button class="wii-btn active"&gt;1&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;2&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;3&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;&raquo;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Progress Bar -->
+          <h2>Progress Bar</h2>
+          <div class="wii-progress">
+            <div class="wii-progress-bar" style="width: 60%"></div>
+            <span class="wii-progress-label">60%</span>
+          </div>
+          <pre><code>&lt;div class="wii-progress"&gt;
+  &lt;div class="wii-progress-bar" style="width: 60%"&gt;&lt;/div&gt;
+  &lt;span class="wii-progress-label"&gt;60%&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Avatar -->
+          <h2>Avatar</h2>
+          <div class="wii-avatar">A</div>
+          <pre><code>&lt;div class="wii-avatar"&gt;A&lt;/div&gt;</code></pre>
+          <!-- Table -->
+          <h2>Table</h2>
+          <table class="wii-table">
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ani</td>
+                <td>ani@email.com</td>
+                <td>Aktif</td>
+              </tr>
+              <tr>
+                <td>Budi</td>
+                <td>budi@email.com</td>
+                <td>Nonaktif</td>
+              </tr>
+            </tbody>
+          </table>
+          <pre><code>&lt;table class="wii-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nama&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ani&lt;/td&gt;
+      &lt;td&gt;ani@email.com&lt;/td&gt;
+      &lt;td&gt;Aktif&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Budi&lt;/td&gt;
+      &lt;td&gt;budi@email.com&lt;/td&gt;
+      &lt;td&gt;Nonaktif&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          <!-- Komponen Baru -->
+          <h2>Navbar</h2>
+          <p>Bar navigasi utama di bagian atas halaman.<br>Main navigation bar at the top of the page.</p>
+          <nav class="wii-navbar" style="margin-bottom:0;">
+            <span class="wii-navbar-logo">Wii UI Kit</span>
+            <ul class="wii-navbar-menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Docs</a></li>
+              <li><a href="#">Demo</a></li>
+            </ul>
+          </nav>
+          <pre><code>&lt;nav class="wii-navbar"&gt;
+    &lt;span class="wii-navbar-logo"&gt;Wii UI Kit&lt;/span&gt;
+    &lt;ul class="wii-navbar-menu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Docs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Demo&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;</code></pre>
+
+          <h2>Sidebar</h2>
+          <p>Menu navigasi samping untuk dashboard atau aplikasi.<br>Sidebar navigation menu for dashboard or app.</p>
+          <aside class="wii-sidebar" style="margin:0 auto;min-width:140px;max-width:180px;">
+            <ul class="wii-sidebar-menu">
+              <li class="active"><a href="#">Dashboard</a></li>
+              <li><a href="#">Komponen</a></li>
+              <li><a href="#">Pengaturan</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </aside>
+          <pre><code>&lt;aside class="wii-sidebar"&gt;
+    &lt;ul class="wii-sidebar-menu"&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Komponen&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Pengaturan&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Logout&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;</code></pre>
+
+          <h2>Accordion</h2>
+          <p>Panel buka/tutup untuk menampilkan informasi tambahan.<br>Expandable/collapsible panel for extra info.</p>
+          <div class="wii-accordion">
+            <button class="wii-accordion-toggle" onclick="wiiAccordionToggle(this)">Apa itu Wii UI Kit?</button>
+            <div class="wii-accordion-content">Wii UI Kit adalah kumpulan komponen UI bergaya Nintendo Wii.</div>
+          </div>
+          <pre><code>&lt;div class="wii-accordion"&gt;
+    &lt;button class="wii-accordion-toggle" onclick="wiiAccordionToggle(this)"&gt;Apa itu Wii UI Kit?&lt;/button&gt;
+    &lt;div class="wii-accordion-content"&gt;Wii UI Kit adalah kumpulan komponen UI bergaya Nintendo Wii.&lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+
+          <h2>Badge</h2>
+          <p>Lencana kecil untuk notifikasi atau jumlah.<br>Small badge for notifications or count.</p>
+          <span class="wii-badge">5</span>
+          <pre><code>&lt;span class="wii-badge"&gt;5&lt;/span&gt;</code></pre>
+
+          <h2>Snackbar</h2>
+          <p>Notifikasi sementara di pojok bawah.<br>Temporary notification at the bottom corner.</p>
+          <div class="wii-snackbar" id="demoSnackbarDocs"><span>Ini notifikasi Wii!</span><button class="wii-snackbar-close" onclick="document.getElementById('demoSnackbarDocs').style.display='none'">&times;</button></div>
+          <pre><code>&lt;div class="wii-snackbar"&gt;...&lt;/div&gt;</code></pre>
+
+          <h2>Date Picker</h2>
+          <p>Input tanggal dengan style Wii.<br>Date input with Wii style.</p>
+          <input class="wii-input" type="date">
+          <pre><code>&lt;input class="wii-input" type="date"&gt;</code></pre>
+
+          <h2>File Upload</h2>
+          <p>Input upload file dengan label custom.<br>File upload input with custom label.</p>
+          <label class="wii-file-label"><input type="file" class="wii-file-input"><span class="wii-file-custom">Pilih file...</span></label>
+          <pre><code>&lt;label class="wii-file-label"&gt;&lt;input type="file" class="wii-file-input"&gt;&lt;span class="wii-file-custom"&gt;Pilih file...&lt;/span&gt;&lt;/label&gt;</code></pre>
+        </div>
+        <!-- English Components List -->
+        <div id="components-list-en" style="display:none;">
+          <!-- Button -->
+          <h2>Button</h2>
+          <button class="wii-btn">Wii Button</button>
+          <pre><code>&lt;button class="wii-btn"&gt;Wii Button&lt;/button&gt;</code></pre>
+          <!-- Input -->
+          <h2>Input</h2>
+          <label class="wii-label">Name
+            <input class="wii-input" type="text" placeholder="Enter your name">
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Name
+  &lt;input class="wii-input" type="text" placeholder="Enter your name"&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Textarea -->
+          <h2>Textarea</h2>
+          <label class="wii-label">Message
+            <textarea class="wii-textarea" placeholder="Write your message..."></textarea>
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Message
+  &lt;textarea class="wii-textarea" placeholder="Write your message..."&gt;&lt;/textarea&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Card -->
+          <h2>Card</h2>
+          <div class="wii-card">
+            <h2 class="wii-card-title">Card Title</h2>
+            <p>This is a sample card with Nintendo Wii style.</p>
+          </div>
+          <pre><code>&lt;div class="wii-card"&gt;
+  &lt;h2 class="wii-card-title"&gt;Card Title&lt;/h2&gt;
+  &lt;p&gt;This is a sample card with Nintendo Wii style.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Modal -->
+          <h2>Modal</h2>
+          <button class="wii-btn" onclick="document.getElementById('demoModalEn').style.display='flex'">Open Modal</button>
+          <div class="wii-modal" id="demoModalEn" style="display:none;">
+            <div class="wii-modal-content">
+              <button class="wii-btn wii-modal-close" onclick="document.getElementById('demoModalEn').style.display='none'">&times;</button>
+              <h2>Wii Modal</h2>
+              <p>This is a modal with Nintendo Wii style.</p>
+            </div>
+          </div>
+          <pre><code>&lt;button class="wii-btn" onclick="document.getElementById('demoModalEn').style.display='flex'"&gt;Open Modal&lt;/button&gt;
+&lt;div class="wii-modal" id="demoModalEn" style="display:none;"&gt;
+  &lt;div class="wii-modal-content"&gt;
+    &lt;button class="wii-btn wii-modal-close" onclick="document.getElementById('demoModalEn').style.display='none'"&gt;&amp;times;&lt;/button&gt;
+    &lt;h2&gt;Wii Modal&lt;/h2&gt;
+    &lt;p&gt;This is a modal with Nintendo Wii style.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Checkbox -->
+          <h2>Checkbox</h2>
+          <label class="wii-checkbox-label">
+            <input type="checkbox" class="wii-checkbox">
+            <span class="wii-checkbox-custom"></span>
+            Wii Checkbox
+          </label>
+          <pre><code>&lt;label class="wii-checkbox-label"&gt;
+  &lt;input type="checkbox" class="wii-checkbox"&gt;
+  &lt;span class="wii-checkbox-custom"&gt;&lt;/span&gt;
+  Wii Checkbox
+&lt;/label&gt;</code></pre>
+          <!-- Radio -->
+          <h2>Radio Button</h2>
+          <label class="wii-radio-label">
+            <input type="radio" name="wii-radio-docs-en" class="wii-radio">
+            <span class="wii-radio-custom"></span>
+            Wii Radio
+          </label>
+          <pre><code>&lt;label class="wii-radio-label"&gt;
+  &lt;input type="radio" name="wii-radio" class="wii-radio"&gt;
+  &lt;span class="wii-radio-custom"&gt;&lt;/span&gt;
+  Wii Radio
+&lt;/label&gt;</code></pre>
+          <!-- Switch -->
+          <h2>Switch / Toggle</h2>
+          <label class="wii-switch">
+            <input type="checkbox" class="wii-switch-input">
+            <span class="wii-switch-slider"></span>
+            <span class="wii-switch-label">Wii Switch</span>
+          </label>
+          <pre><code>&lt;label class="wii-switch"&gt;
+  &lt;input type="checkbox" class="wii-switch-input"&gt;
+  &lt;span class="wii-switch-slider"&gt;&lt;/span&gt;
+  &lt;span class="wii-switch-label"&gt;Wii Switch&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Select -->
+          <h2>Select / Dropdown</h2>
+          <label class="wii-label">Choose Option
+            <select class="wii-select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </label>
+          <pre><code>&lt;label class="wii-label"&gt;Choose Option
+  &lt;select class="wii-select"&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+    &lt;option&gt;Option 3&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;</code></pre>
+          <!-- Tooltip -->
+          <h2>Tooltip</h2>
+          <button class="wii-btn wii-tooltip-parent">Hover me!
+            <span class="wii-tooltip">This is a Wii tooltip!</span>
+          </button>
+          <pre><code>&lt;button class="wii-btn wii-tooltip-parent"&gt;Hover me!
+  &lt;span class="wii-tooltip"&gt;This is a Wii tooltip!&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+          <!-- Pagination -->
+          <h2>Pagination</h2>
+          <div class="wii-pagination">
+            <button class="wii-btn" disabled>&laquo;</button>
+            <button class="wii-btn active">1</button>
+            <button class="wii-btn">2</button>
+            <button class="wii-btn">3</button>
+            <button class="wii-btn">&raquo;</button>
+          </div>
+          <pre><code>&lt;div class="wii-pagination"&gt;
+  &lt;button class="wii-btn" disabled&gt;&laquo;&lt;/button&gt;
+  &lt;button class="wii-btn active"&gt;1&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;2&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;3&lt;/button&gt;
+  &lt;button class="wii-btn"&gt;&raquo;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Progress Bar -->
+          <h2>Progress Bar</h2>
+          <div class="wii-progress">
+            <div class="wii-progress-bar" style="width: 60%"></div>
+            <span class="wii-progress-label">60%</span>
+          </div>
+          <pre><code>&lt;div class="wii-progress"&gt;
+  &lt;div class="wii-progress-bar" style="width: 60%"&gt;&lt;/div&gt;
+  &lt;span class="wii-progress-label"&gt;60%&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          <!-- Avatar -->
+          <h2>Avatar</h2>
+          <div class="wii-avatar">A</div>
+          <pre><code>&lt;div class="wii-avatar"&gt;A&lt;/div&gt;</code></pre>
+          <!-- Table -->
+          <h2>Table</h2>
+          <table class="wii-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ani</td>
+                <td>ani@email.com</td>
+                <td>Active</td>
+              </tr>
+              <tr>
+                <td>Budi</td>
+                <td>budi@email.com</td>
+                <td>Inactive</td>
+              </tr>
+            </tbody>
+          </table>
+          <pre><code>&lt;table class="wii-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ani&lt;/td&gt;
+      &lt;td&gt;ani@email.com&lt;/td&gt;
+      &lt;td&gt;Active&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Budi&lt;/td&gt;
+      &lt;td&gt;budi@email.com&lt;/td&gt;
+      &lt;td&gt;Inactive&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    // Sidebar menu logic
+    function showSection(section) {
+      document.querySelectorAll('.docs-menu button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('menu-' + section).classList.add('active');
+      document.querySelectorAll('.docs-section').forEach(sec => sec.style.display = 'none');
+      document.getElementById('section-' + section).style.display = '';
+    }
+    // Language switch logic
+    function switchLang(lang) {
+      document.getElementById('lang-id').classList.toggle('active', lang === 'id');
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      // Introduction
+      document.querySelectorAll('#section-intro h1')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-intro h1')[1].style.display = lang === 'en' ? '' : 'none';
+      document.querySelectorAll('#section-intro p')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-intro p')[1].style.display = lang === 'en' ? '' : 'none';
+      // Install
+      document.querySelectorAll('#section-install h1')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-install h1')[1].style.display = lang === 'en' ? '' : 'none';
+      document.querySelectorAll('#section-install ol')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-install ol')[1].style.display = lang === 'en' ? '' : 'none';
+      // Components
+      document.querySelectorAll('#section-components h1')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-components h1')[1].style.display = lang === 'en' ? '' : 'none';
+      document.querySelectorAll('#section-components p')[0].style.display = lang === 'id' ? '' : 'none';
+      document.querySelectorAll('#section-components p')[1].style.display = lang === 'en' ? '' : 'none';
+      document.getElementById('components-list-id').style.display = lang === 'id' ? '' : 'none';
+      document.getElementById('components-list-en').style.display = lang === 'en' ? '' : 'none';
+    }
+    // Modal close on click outside (for docs preview)
+    document.addEventListener('click', function(e) {
+      var modal = document.getElementById('demoModal');
+      if (modal && modal.style.display !== 'none' && !modal.querySelector('.wii-modal-content').contains(e.target) && e.target.className !== 'wii-btn') {
+        modal.style.display = 'none';
+      }
+      var modalEn = document.getElementById('demoModalEn');
+      if (modalEn && modalEn.style.display !== 'none' && !modalEn.querySelector('.wii-modal-content').contains(e.target) && e.target.className !== 'wii-btn') {
+        modalEn.style.display = 'none';
+      }
+    });
+    // Tabs logic for docs preview
+    function wiiTabSwitch(evt, tabId) {
+      document.querySelectorAll('.wii-tab').forEach(btn => btn.classList.remove('active'));
+      evt.target.classList.add('active');
+      document.querySelectorAll('.wii-tab-content').forEach(div => div.style.display = 'none');
+      document.getElementById(tabId).style.display = '';
+    }
+    // Default: Indonesia
+    switchLang('id');
+    showSection('intro');
+    function wiiAccordionToggle(btn) {
+      var content = btn.nextElementSibling;
+      var isOpen = content.style.display === 'block';
+      document.querySelectorAll('.wii-accordion-content').forEach(c => c.style.display = 'none');
+      if (!isOpen) content.style.display = 'block';
+    }
+    setTimeout(function(){
+      var sb = document.getElementById('demoSnackbarDocs');
+      if(sb) sb.style.display = 'block';
+    }, 1200);
+  </script>
+</body>
+</html> 
