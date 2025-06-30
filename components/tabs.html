@@ -1,0 +1,16 @@
+<div class="wii-tabs">
+  <button class="wii-tab active" onclick="wiiTabSwitch(event, 'tab1')">Tab 1</button>
+  <button class="wii-tab" onclick="wiiTabSwitch(event, 'tab2')">Tab 2</button>
+  <button class="wii-tab" onclick="wiiTabSwitch(event, 'tab3')">Tab 3</button>
+</div>
+<div class="wii-tab-content" id="tab1">Konten Tab 1</div>
+<div class="wii-tab-content" id="tab2" style="display:none;">Konten Tab 2</div>
+<div class="wii-tab-content" id="tab3" style="display:none;">Konten Tab 3</div>
+<script>
+function wiiTabSwitch(evt, tabId) {
+  document.querySelectorAll('.wii-tab').forEach(btn => btn.classList.remove('active'));
+  evt.target.classList.add('active');
+  document.querySelectorAll('.wii-tab-content').forEach(div => div.style.display = 'none');
+  document.getElementById(tabId).style.display = '';
+}
+</script> 

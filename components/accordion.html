@@ -1,0 +1,14 @@
+<div class="wii-accordion">
+  <button class="wii-accordion-toggle" onclick="wiiAccordionToggle(this)">Apa itu Wii UI Kit?</button>
+  <div class="wii-accordion-content">Wii UI Kit adalah kumpulan komponen UI bergaya Nintendo Wii.</div>
+  <button class="wii-accordion-toggle" onclick="wiiAccordionToggle(this)">Bagaimana cara pakainya?</button>
+  <div class="wii-accordion-content">Cukup import CSS dan gunakan komponen di HTML Anda.</div>
+</div>
+<script>
+function wiiAccordionToggle(btn) {
+  var content = btn.nextElementSibling;
+  var isOpen = content.style.display === 'block';
+  document.querySelectorAll('.wii-accordion-content').forEach(c => c.style.display = 'none');
+  if (!isOpen) content.style.display = 'block';
+}
+</script> 
