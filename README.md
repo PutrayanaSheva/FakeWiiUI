@@ -1,52 +1,25 @@
-# Nintendo Wii Style UI Kit
+# Nintendo Wii UI Kit
 
-## 🇮🇩 Dokumentasi (Bahasa Indonesia)
+Bring the Wii Experience to Your Website!
 
-### Deskripsi
-UI Kit ini menghadirkan komponen antarmuka bergaya Nintendo Wii untuk website Anda. Ringan, mudah digunakan, dan dapat dikustomisasi.
+## Description
+Wii UI Kit is a collection of lightweight, customizable, and easy-to-use Nintendo Wii-style user interface components. This UI Kit is perfect for modern websites that want to bring a fun, clean, and interactive Nintendo Wii vibe.
 
-### Cara Penggunaan
-1. Salin folder `styles/` dan `components/` ke project Anda.
-2. Tambahkan link CSS berikut ke `<head>` HTML Anda:
+## Main Features
+- Rounded, glossy design with signature Wii light blue colors
+- Ready-to-use components: button, input, card, modal, and more
+- Easy to integrate into any project
+- Free & open source
+
+## Getting Started
+1. Download the UI Kit:
+   - [Download UI Kit (RAR)](source/FakeWiiDEMO.rar)
+2. Copy the `styles/` and `components/` folders to your project.
+3. Add the following CSS link to your HTML `<head>`:
    ```html
    <link rel="stylesheet" href="styles/uikit.css">
    ```
-3. Gunakan komponen di HTML Anda, contoh:
-   ```html
-   <button class="wii-btn">Tombol Wii</button>
-   <label class="wii-label">Nama
-     <input class="wii-input" type="text" placeholder="Masukkan nama Anda">
-   </label>
-   <div class="wii-card">
-     <h2 class="wii-card-title">Judul Card</h2>
-     <p>Ini adalah contoh card dengan gaya Nintendo Wii.</p>
-   </div>
-   ```
-
-### Daftar Komponen
-- Button (`.wii-btn`)
-- Input (`.wii-input`)
-- Card (`.wii-card`)
-- Modal (`.wii-modal`)
-
-### Kustomisasi
-- Ubah warna, font, dan radius di `styles/uikit.css` sesuai kebutuhan.
-- Ganti file cursor di `components/cursor/` jika ingin tampilan berbeda.
-
----
-
-## 🇬🇧 Documentation (English)
-
-### Description
-This UI Kit brings Nintendo Wii-style interface components to your website. Lightweight, easy to use, and customizable.
-
-### How to Use
-1. Copy the `styles/` and `components/` folders to your project.
-2. Add the following CSS link to your HTML `<head>`:
-   ```html
-   <link rel="stylesheet" href="styles/uikit.css">
-   ```
-3. Use the components in your HTML, for example:
+4. Use the components in your HTML, for example:
    ```html
    <button class="wii-btn">Wii Button</button>
    <label class="wii-label">Name
@@ -58,12 +31,9 @@ This UI Kit brings Nintendo Wii-style interface components to your website. Ligh
    </div>
    ```
 
-### Components List
-- Button (`.wii-btn`)
-- Input (`.wii-input`)
-- Card (`.wii-card`)
-- Modal (`.wii-modal`)
+## Documentation
+See the full documentation and component previews here:
+- [Documentation](docs.html)
 
-### Customization
-- Change colors, fonts, and radius in `styles/uikit.css` as needed.
-- Replace cursor files in `components/cursor/` for a different look. 
+---
+Sheva © 2025 Nintendo Fake Wii UI Kit 
