@@ -1,0 +1,740 @@
+@font-face {
+  font-family: 'WiiFont';
+  src: url('../components/font/contb.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'WiiFont';
+  src: url('../components/font/contm.ttf') format('truetype');
+  font-weight: normal;
+}
+h1, h2 {
+  font-family: 'WiiFont', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+body {
+  background: #eaf6ff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  margin: 0;
+  padding: 2rem;
+}
+
+.uikit-demo {
+  margin-top: 2rem;
+}
+
+.wii-btn {
+  background: linear-gradient(180deg, #ffffff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 80, 180, 0.08), 0 1.5px 0 #bde3ff inset;
+  color: #0078d7;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.wii-btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 40%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  pointer-events: none;
+}
+
+.wii-btn:hover, .wii-btn:focus {
+  box-shadow: 0 6px 18px rgba(0, 120, 215, 0.18), 0 1.5px 0 #bde3ff inset;
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(180deg, #f8fcff 60%, #bde3ff 100%);
+}
+
+/* Custom Wii Cursor pakai file .cur */
+body, .wii-card, .wii-modal {
+  cursor: url('../components/cursor/wii-open.cur'), pointer;
+}
+button, .wii-btn, input, .wii-input, a:hover, button:hover, .wii-btn:hover, input:hover, .wii-input:hover {
+  cursor: url('../components/cursor/wii-pointer.cur'), pointer;
+}
+
+/* Input Wii */
+.wii-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.wii-input {
+  display: block;
+  width: 20%;
+  padding: 1rem 1.5rem;
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fafdff 60%, #eaf6ff 100%);
+  font-size: 1.15rem;
+  color: #0078d7;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.06), 0 1.5px 0 #bde3ff inset;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  position: relative;
+}
+.wii-input:focus {
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 0 3px #bde3ff, 0 2px 8px rgba(0, 120, 215, 0.10);
+  background: linear-gradient(180deg, #f8fcff 60%, #eaf6ff 100%);
+}
+.wii-input::placeholder {
+  color: #a3c6e6;
+  opacity: 1;
+  font-style: italic;
+}
+/* Hilangkan panah pada input number */
+.wii-input[type=number]::-webkit-inner-spin-button, 
+.wii-input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.wii-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Card Wii */
+.wii-card {
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 120, 215, 0.10);
+  padding: 2rem 1.5rem;
+  margin: 1.5rem 0;
+  max-width: 350px;
+  border: 2px solid #bde3ff;
+}
+.wii-card-title {
+  margin-top: 0;
+  color: #0078d7;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Modal Wii */
+.wii-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 120, 215, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.wii-modal-content {
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(0, 120, 215, 0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+  min-width: 320px;
+  max-width: 90vw;
+  border: 2px solid #bde3ff;
+  text-align: center;
+}
+.wii-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #0078d7;
+  cursor: pointer;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.wii-modal-close:hover {
+  background: #eaf6ff;
+}
+
+/* Checkbox Wii */
+.wii-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+.wii-checkbox {
+  display: none;
+}
+.wii-checkbox-custom {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  box-shadow: 0 2px 6px rgba(0,120,215,0.10);
+  margin-right: 0.7rem;
+  position: relative;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.wii-checkbox:checked + .wii-checkbox-custom::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 14px;
+  border: solid #0078d7;
+  border-width: 0 3px 3px 0;
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+.wii-checkbox:focus + .wii-checkbox-custom {
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 0 2px #bde3ff;
+}
+
+/* Radio Wii */
+.wii-radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+.wii-radio {
+  display: none;
+}
+.wii-radio-custom {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  box-shadow: 0 2px 6px rgba(0,120,215,0.10);
+  margin-right: 0.7rem;
+  position: relative;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.wii-radio:checked + .wii-radio-custom::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: #0078d7;
+  border-radius: 50%;
+}
+.wii-radio:focus + .wii-radio-custom {
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 0 2px #bde3ff;
+}
+
+/* Switch Wii */
+.wii-switch {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+.wii-switch-input {
+  display: none;
+}
+.wii-switch-slider {
+  width: 44px;
+  height: 24px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  box-shadow: 0 2px 6px rgba(0,120,215,0.10);
+  margin-right: 0.7rem;
+  position: relative;
+  transition: background 0.2s, border 0.2s;
+  display: inline-block;
+}
+.wii-switch-slider::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  background: #bde3ff;
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
+}
+.wii-switch-input:checked + .wii-switch-slider {
+  background: linear-gradient(180deg, #bde3ff 60%, #fff 100%);
+  border: 2px solid #0078d7;
+}
+.wii-switch-input:checked + .wii-switch-slider::before {
+  transform: translateX(20px);
+  background: #0078d7;
+}
+
+/* Select Wii */
+.wii-select {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff 70%, #eaf6ff 100%);
+  font-size: 1rem;
+  color: #0078d7;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.06);
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%230078d7" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+}
+.wii-select:focus {
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 0 2px #bde3ff;
+}
+
+/* Alert Wii */
+.wii-alert {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.10);
+  padding: 1rem 1.5rem;
+  color: #0078d7;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.wii-alert-icon {
+  font-size: 1.5rem;
+  margin-right: 0.7rem;
+}
+.wii-alert-close {
+  background: none;
+  border: none;
+  color: #0078d7;
+  font-size: 1.3rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  transition: background 0.2s;
+}
+.wii-alert-close:hover {
+  background: #eaf6ff;
+}
+
+/* Loader Wii */
+.wii-loader {
+  border: 4px solid #eaf6ff;
+  border-top: 4px solid #0078d7;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: wii-spin 1s linear infinite;
+  margin: 1rem auto;
+}
+@keyframes wii-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Textarea Wii */
+.wii-textarea {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  padding: 1rem 1.5rem;
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fafdff 60%, #eaf6ff 100%);
+  font-size: 1.1rem;
+  color: #0078d7;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 8px rgba(0, 120, 215, 0.06), 0 1.5px 0 #bde3ff inset;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  resize: vertical;
+}
+.wii-textarea:focus {
+  border: 2px solid #0078d7;
+  box-shadow: 0 0 0 3px #bde3ff, 0 2px 8px rgba(0, 120, 215, 0.10);
+  background: linear-gradient(180deg, #f8fcff 60%, #eaf6ff 100%);
+}
+.wii-textarea::placeholder {
+  color: #a3c6e6;
+  opacity: 1;
+  font-style: italic;
+}
+
+/* Tabs Wii */
+.wii-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.wii-tab {
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 18px 18px 0 0;
+  color: #0078d7;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.6rem 2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0,120,215,0.08);
+  position: relative;
+}
+.wii-tab.active, .wii-tab:focus {
+  background: linear-gradient(180deg, #eaf6ff 60%, #bde3ff 100%);
+  color: #005fa3;
+  border-bottom: 2px solid #eaf6ff;
+  z-index: 2;
+}
+.wii-tab-content {
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border-radius: 0 0 18px 18px;
+  border: 2px solid #bde3ff;
+  border-top: none;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  color: #0078d7;
+}
+
+/* Tooltip Wii */
+.wii-tooltip-parent {
+  position: relative;
+  display: inline-block;
+}
+.wii-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  max-width: 220px;
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  color: #0078d7;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid #bde3ff;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 8px rgba(0,120,215,0.10);
+  font-size: 1rem;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.wii-tooltip-parent:hover .wii-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Pagination Wii */
+.wii-pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.wii-pagination .wii-btn {
+  min-width: 40px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+.wii-pagination .wii-btn.active {
+  background: linear-gradient(180deg, #eaf6ff 60%, #bde3ff 100%);
+  color: #005fa3;
+  border: 2px solid #0078d7;
+}
+.wii-pagination .wii-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Progress Bar Wii */
+.wii-progress {
+  background: #eaf6ff;
+  border-radius: 16px;
+  border: 2px solid #bde3ff;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+  width: 100%;
+  max-width: 350px;
+  height: 28px;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.wii-progress-bar {
+  background: linear-gradient(90deg, #bde3ff 60%, #0078d7 100%);
+  height: 100%;
+  border-radius: 14px 0 0 14px;
+  transition: width 0.4s;
+}
+.wii-progress-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #0078d7;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Avatar Wii */
+.wii-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 50%;
+  color: #0078d7;
+  font-size: 1.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.10);
+  margin-bottom: 1rem;
+}
+
+/* Table Wii */
+.wii-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.wii-table th, .wii-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  color: #0078d7;
+}
+.wii-table th {
+  background: #eaf6ff;
+  font-weight: bold;
+  border-bottom: 2px solid #bde3ff;
+}
+.wii-table tr {
+  transition: background 0.2s;
+}
+.wii-table tr:hover {
+  background: #f6fbff;
+}
+.wii-table td {
+  border-bottom: 1px solid #eaf6ff;
+}
+
+/* Navbar Wii */
+.wii-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #bde3ff 60%, #eaf6ff 100%);
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+  padding: 1.2rem 2rem;
+  margin-bottom: 2rem;
+}
+.wii-navbar-logo {
+  font-family: 'WiiFont', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.5rem;
+  color: #0078d7;
+  font-weight: bold;
+}
+.wii-navbar-menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.wii-navbar-menu li a {
+  color: #0078d7;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 14px;
+  transition: background 0.18s, color 0.18s;
+}
+.wii-navbar-menu li a:hover, .wii-navbar-menu li.active a {
+  background: #eaf6ff;
+  color: #005fa3;
+}
+
+/* Sidebar Wii */
+.wii-sidebar {
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,120,215,0.10);
+  border: 2px solid #bde3ff;
+  padding: 2rem 1rem;
+  width: 200px;
+  min-height: 350px;
+}
+.wii-sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.wii-sidebar-menu li {
+  margin-bottom: 1rem;
+}
+.wii-sidebar-menu li a {
+  color: #0078d7;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.7rem 1.2rem;
+  border-radius: 14px;
+  display: block;
+  transition: background 0.18s, color 0.18s;
+}
+.wii-sidebar-menu li.active a, .wii-sidebar-menu li a:hover {
+  background: #eaf6ff;
+  color: #005fa3;
+}
+
+/* Accordion Wii */
+.wii-accordion {
+  width: 100%;
+  max-width: 400px;
+  margin: 1.5rem 0;
+}
+.wii-accordion-toggle {
+  width: 100%;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  color: #0078d7;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+.wii-accordion-toggle:hover {
+  background: #eaf6ff;
+  color: #005fa3;
+}
+.wii-accordion-content {
+  display: none;
+  background: #f6fbff;
+  border-radius: 0 0 18px 18px;
+  border: 2px solid #bde3ff;
+  border-top: none;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.08);
+  padding: 1.2rem;
+  color: #0078d7;
+  margin-bottom: 1rem;
+}
+
+/* Badge Wii */
+.wii-badge {
+  display: inline-block;
+  min-width: 28px;
+  height: 28px;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  color: #0078d7;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 2px solid #bde3ff;
+  text-align: center;
+  line-height: 26px;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.10);
+}
+
+/* Snackbar Wii */
+.wii-snackbar {
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: 2.5rem;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #fff 70%, #bde3ff 100%);
+  color: #0078d7;
+  border-radius: 18px;
+  border: 2px solid #bde3ff;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.10);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  z-index: 2000;
+  align-items: center;
+  min-width: 220px;
+}
+.wii-snackbar-close {
+  background: none;
+  border: none;
+  color: #0078d7;
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  transition: background 0.2s;
+}
+.wii-snackbar-close:hover {
+  background: #eaf6ff;
+}
+
+/* File Upload Wii */
+.wii-file-label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.wii-file-input {
+  display: none;
+}
+.wii-file-custom {
+  display: inline-block;
+  background: linear-gradient(180deg, #fff 60%, #bde3ff 100%);
+  border: 2px solid #bde3ff;
+  border-radius: 18px;
+  color: #0078d7;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,120,215,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.wii-file-label:hover .wii-file-custom {
+  background: #eaf6ff;
+  color: #005fa3;
+} 
